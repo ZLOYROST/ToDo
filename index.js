@@ -787,3 +787,4 @@ function fnA() {
 fnA()
 console.log(a)
 // console.log(b)
+console.log('bezdar\'')
