@@ -1,0 +1,13 @@
+[1mdiff --git a/index.js b/index.js[m
+[1mindex 64e1c5a..eb7d66f 100644[m
+[1m--- a/index.js[m
+[1m+++ b/index.js[m
+[36m@@ -790,4 +790,5 @@[m [mconsole.log(a)[m
+ console.log('bezdar\'')[m
+ console.log(883)[m
+ console.log(4342)[m
+[31m-firstName.toUpperCase()[m
+\ No newline at end of file[m
+[32m+[m[32mfirstName.toUpperCase()[m
+[32m+[m[32mfgfg[m
+\ No newline at end of file[m
