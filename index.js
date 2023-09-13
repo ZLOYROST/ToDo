@@ -751,42 +751,548 @@
 // console.log(a.replace([2], 't'))
 
 // let a = 1;
-let b = 2;
+// let b = 2;
 
-console.log(a + b);
+// console.log(a + b);
 
-function reverseString(str) {
-  return str.split('').reverse().join('')
-}
+// function reverseString(str) {
+//   return str.split('').reverse().join('')
+// }
 
-reverseString('Greetings from Earth')
+// reverseString('Greetings from Earth')
 
-const firstName = 'Zloy';
-console.log(firstName[1])
+// const firstName = 'Zloy';
+// console.log(firstName[1])
 
-console.log('doka'.replace("k", "t"))
+// console.log('doka'.replace("k", "t"))
 
 
-let value = true;
-value = String(value); // теперь value — это строка "true"
- alert(typeof value)
+// let value = true;
+// value = String(value); // теперь value — это строка "true"
+//  alert(typeof value)
 
-// console.log(null)
-// const a = 2
-function fnA() {
-  // a = 7;
+// // console.log(null)
+// // const a = 2
+// function fnA() {
+//   // a = 7;
  
-  let b = 11;
-   b = 13;
-   let c = 44
-  console.log(a); // что будет
-  console.log(b); //
-  console.log(c)
+//   let b = 11;
+//    b = 13;
+//    let c = 44
+//   console.log(a); // что будет
+//   console.log(b); //
+//   console.log(c)
 
-}
-fnA()
-console.log(a)
+// }
+// fnA()
+// console.log(a)
+// // console.log(b)
+// console.log('bezdar\'')
+// console.log(883)
+// console.log(4342)
+// firstName.toUpperCase()
+
+// console.log(102)
+// console.log(10000)
+// function a()
+// dsds
+
+
+
+// const myArray = [1,2,3,5]
+// myArray.push(9,9,9, 'dsds')
+// console.log(myArray)
+// const myArray = [1,2,3,5]
+
+// console.log(myArray.pop())
+// console.log(myArray)
+// ----------------------------------
+// const myArray = [
+//    {name: 'alex', age: 25},
+//    {name: 'borya', age: 37},
+//    {name: 'zarra', age: 65}
+// ]
+// const copyArray = myArray.splice(0)
+
+// copyArray.forEach(n => n.name = 'ppp')
+// // copyArray.forEach(n => n.age = 3234 )
+// copyArray.reverse()
+// console.log(copyArray)
+
+// let arr  = [77,78,797,80,-4,-459,2932,-350,-1]
+
+// let plusnumbers = arr.filter(function(number) {
+//   return number % 4 == 0 || number < 0
+// })
+
+// let getNumbers = subArrays
+// console.log(subArrays)
+// const numbers = [-1,-54,48,59,99]
+// let maxNumber = Math.max.apply(null,numbers)
+// console.log(maxNumber)
+// console.log(plusnumbers)
+
+// const subArrays = [[1,2,44], [22,52,98], [16,73,255]]
+// subArrays.forEach((elem1) => {
+ 
+//  const value = Math.max.apply(0, elem1 )
+ 
+//     console.log(value);
+//   })
+  
+// // // })
+
+
+
+
+
+// // arr.forEach((el) => {
+// //   console.log(el);
+// // });
+// const getData = (url) =>
+// new Promise ((resolve, reject)) =>
+
+
+// let p = Promise.resolve([1, 2, 3]);
+// p.then(function (v) {
+//   console.log(v[2]); // 1
+// });
+
+// const subArrays = [[1,2,44], [22,52,98], [16,73,255]]
+// subArrays.forEach((elem) => {
+// const value = Math.min.apply(null, elem)
+// console.log(value)
+// }
+// )
+// const a = [1,2,3,4,5,6,7,8,9]
+// a.forEach((elem) => {
+//   const value = Math.min.apply(null, elem)
+//   console.log(value)
+// }
+
+// )
+
+// const massive = [
+//   {name:'Anna', code: 1111},
+//   {name:'vvv', code: 342},
+//   {name:'xxx', code: 234},
+//   {name:'zzz', code: 5353},
+//   {name:'bcdf', code: 5453},
+//   {name:'wqwe', code: 234},
+//   {name:'uyuyu', code: 43},
+// ]
+
+// const newMassive = massive.slice(0)
+// newMassive.forEach(n => n.code = 3990 )
+// newMassive.forEach(n => n.name = 'kol' )
+// newMassive.forEach(n => n.age = 35 )
+// console.log(newMassive)
+
+//  const subArrays = [[1,2,44], [22,52,98], [16,73,255], [1,2,999,1293]]
+//  subArrays.forEach((el) => {
+//   const value = Math.max.apply(null,el)
+//   console.log(value)
+//  }
+//  )
+// const massive = [
+//   {name:'Anna', code: 1111},
+//   {name:'vvv', code: 342},
+//   {name:'xxx', code: 234},
+//   {name:'zzz', code: 5353},
+//   {name:'bcdf', code: 5453},
+//   {name:'wqwe', code: 234},
+//   {name:'uyuyu', code: 43},
+// ]
+// massive.find(el => el.name == 'zzz')
+
+// const subArrays = [1,2,3,4,5,6,,7,8,9,0]
+// subArrays.forEach(el => console.log(el))
+// subArrays.includes(3)
+
+// const massive = [
+//   {name:'Anna', code: 1111},
+//   {name:'vvv', code: 342},
+//   {name:'xxx', code: 234},
+//   {name:'zzz', code: 5353},
+//   {name:'bcdf', code: 5453},
+//   {name:'wqwe', code: 234},
+//   {name:'uyuyu', code: 43},
+// ]
+
+// const number = subArrays.flat()
+// const subArrays = [-92,388,38271,-343,1,6,-5]
+// subArrays.sort()
+// console.log(subArrays)
+
+
+// let arr = [1,2,3,4,5,,6,7,8,9];
+// // arr.unshift('Holla')
+// // arr.push({name:'uyuyu', code: 43})
+// arr.sort()
+
+// console.log(arr)
+// let one = [150, 'mango', 300]
+// let two = [189, 'apple', 748]
+// let three = [187, 'banan', 192]
+// let sum = one[0] + one[2] + two[0] + two[2] + three[0] + three[2]
+// console.log(sum)
+// const num = [1,2,3,4,5,858,-3949]
+// const value = Math.min(...  num) 
+// console.log(value)
+
+// let obj = {
+
+//   'Minsk': 'Belarus',
+
+//   'Moscow': 'russ',
+
+//   'Kiev': 'Ukraine'
+
+// };
+// for (let key in obj) {
+//   console.log(key + ' it s ' + obj[key])
+// }
+
+// var b = [1, 2, 3];
+// b.reverse()
 // console.log(b)
-console.log('bezdar\'')
-console.log(883)
-console.log(4342)
+
+// проверка на пустоту массива
+
+// const arr = [];
+
+// function check (... arr) {
+//   if (arr.length) {
+//     console.log('не пусто')
+//   } else {
+//     console.log('пусто')
+//   }
+// }
+// check(...arr);
+
+// const num = [2,5,9]
+// num.splice(1,1)
+// console.log(num)
+
+//  const nums = [
+//   {'id': 1, name: 'test'},
+//   {'id': 2, name: 'test2'},
+//   {'id': 3, name: 'test3'}
+//   ]
+//   const value = nums.find(item => item.id == 3)
+//   console.log(value)
+
+
+//  const subArrays = [[1,2,44], [22,52,98], [16,73,255], [1,2,999,1293]]
+//  const value = subArrays.forEach((el) => {
+//   const z = Math.min.apply(null,el)
+//   console.log(z)
+//  }
+ 
+//  )
+// const massive = [
+//   {name:'Anna', code: 1111},
+//   {name:'vvv', code: 342},
+//   {name:'xxx', code: 234},
+//   {name:'zzz', code: 5353},
+//   {name:'bcdf', code: 5453},
+//   {name:'wqwe', code: 234},
+//   {name:'uyuyu', code: 43},
+// ]
+
+// const value = massive.forEach(n => (n.code = 909))
+// console.log(massive)
+
+
+// var obj = {
+//   'Минск': 'Беларусь',
+//   'Москва': 'Россия',
+//   'Киев': 'Украина'
+// };
+// for(let key in obj) {
+//   console.log(key + ' ' +obj[key])
+// }
+
+// var obj = {
+//   name:['Вася', 'Петя', 'Коля'],
+//   age:[11, 30, 20],
+// };
+// let value = obj.name[1]
+// console.log(value)
+
+// let arr = [{id:'1','prop1':'val1'},
+//            {id:'2','prop1':'val2'}
+// ]
+
+// arr.find( (item, index, arr) => {
+
+//   item.id == 2;
+  
+//   })
+
+// const fruits = ["Banana", "Orange", "Apple", "Mango"];
+// let value = fruits.includes('Apple')
+// console.log(value)
+
+// let arr = [ "Hi", "Hello", "Bonjour"];
+// function check (... arr) {
+//   if ( arr.length) {
+//     console.log('не пусто')
+//   }
+  
+//     else { (console.log('pycto'))
+// }
+// }
+// check(... arr )
+
+// var vegetables = ['Капуста', 'Репа', 'Редиска', 'Морковка'];
+// let value = vegetables.join(' , ')
+
+// let z = vegetables.toString(' , ');
+// console.log(value)
+// console.log(z)
+
+// const str = ('Введите слово', 'КаЖдЫй ОхОтНиК');
+// let value = str.toLowerCase()
+// console.log(value)
+
+// const arr = ["php", "php", "css", "css",
+//   "script", "script", "html", "html", "java"
+// ];
+// const Makeunic = (arr) => [... new set (arr)]
+// const value = Makeunic
+// console.log(value)
+
+// const h = [1,2,3,4,5,6,7,8,9].sort(function()
+// {return 0.5 - Math.random()})
+// console.log(h)
+
+// let array = [1,2,3,4,5,6,7,8,9];
+// array.length
+// // let mass = array.slice(5,7)
+// console.log(sum)
+
+// ---сумма массива
+
+// let numbers = [5, 10, 15, 20];
+// let sum = 0;
+ 
+// numbers.forEach(function(num) {
+//     sum += num;
+// });
+ 
+// console.log(sum); //
+
+// ----------сколько раз повторяется элесенты в массиве
+
+// function count(array){
+//   var names = {};
+//   array.forEach(item => {
+//     names[item] = (names[item] || 0) + 1;
+//   });
+//   return names;
+// }
+
+// -------соединение масивов
+
+// const subArrays = [[1,2,44], [22,52,98], [16,73,255], [1,2,999,1293]]
+// const mas = [1,2,3,4]
+// const flat = subArrays.concat(mas)
+// console.log(flat)
+
+//  const subArrays = [[1,2,44], [22,52,98], [16,73,255], [1,2,999,1293]]
+
+
+// let z= [ ,'Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+// let x = prompt('месяц', ' ')
+// if (x<= 12 ); {
+//   console.log(z[x])
+// }
+
+
+// var obj = {
+//   'Минск': 'Беларусь',
+//   'Москва': 'Россия',
+//   'Киев': 'Украина'
+// };
+// for(let key in obj) {
+//   console.log(key + ' ' + obj[key])
+// }
+
+// var arr = [ "Hi", "Hello", "Bonjour"];
+
+
+// function check(... arr) {
+// if(arr.length) {
+//   console.log('ne pyscto')
+
+// } else {
+//   console.log('pycto')
+// }
+// }
+// check(... arr)
+
+// ----------Удаление повторяющихся элементов
+
+// var arr = [ 1, 3, 5, 1, 2, 3, 7, 4, 5];
+// const unic = Array.from( new Set (arr))
+// console.log(unic)
+
+// const v = [1,1,1,3,4,4,5,5]
+// const value = Array.from(new Set (v))
+// console.log(value)
+
+// -------Сумма всех элементов массива
+// const nums1 = [99,32,21]
+// const nums = [ 11,32,54,65,3,65,1,]
+// const value = nums1.concat(nums)
+
+
+// const zna4 = value.reduce(function (a,b)  {
+//   return a + b
+// }
+// )
+// console.log(zna4)
+
+// const nums1 = [99,32,21]
+// const value = nums1.reduce(function (a,b)  {
+//   return a + b
+ 
+// })
+// console.log(value)
+
+// const massive = [
+//   {name:'Anna', code: 1111},
+//   {name:'vvv', code: 342},
+//   {name:'xxx', code: 234},
+//   {name:'zzz', code: 5353},
+//   {name:'bcdf', code: 5453},
+//   {name:'wqwe', code: 234},
+//   {name:'uyuyu', code: 43},
+// ]
+// const value = massive.find(el => el.name == 'zzz' )
+// console.log(value)
+
+
+//  const nums = [
+//   {'id': 1, name: 'test'},
+//   {'id': 2, name: 'test2'},
+//   {'id': 3, name: 'test3'}
+//   ]
+//   const value = nums.find(item => item.id == 3)
+//   console.log(value)
+// const o = [1,2,3]
+// const value = o.reduce(function (a,b) {
+// return a + b
+// }
+// )
+// console.log(value)
+
+// const fruits = ["Banana", "Orange", "Apple", "Mango"];
+// const g = [1,2,3]
+// const v = g.concat(fruits)
+// let b = v[3]
+// console.log(b)
+
+
+// let massive = ['Капуста', 'Репа', 'Редиска', 'Морковка']
+// const MassiveLength = massive.map(function (el) {
+//   return el.length
+// }
+
+// )
+// console.log(MassiveLength)
+
+// let arr = [1,2,3,6,5,44]
+// const value = arr.map((el) => el * 2)
+// console.log(value);
+
+
+
+// var step;
+// for (step = 0; step < 5; step++) {
+//   // Запускается 5 раз, с шагом от 0 до 4.
+//   console.log("Идём 1 шаг на восток");
+// }
+// let z= [ ,'Январь','Февраль','Март','Апрель',]
+// let x = prompt('месяц', ' ')
+// if (x <=4 ) {
+//    console.log(z[x])
+// }
+
+// let sum = 0;
+// const n = 121
+
+
+
+// for (let i = 1; i <= n; i++) {
+//     sum += i;  // sum = sum + i
+// }
+
+// console.log("Сумма: ", sum);
+
+// let sum = 0;
+// const n = 100
+
+
+
+// for (let i = 1; i <= n; i++) {
+//     console.log('step')  
+// }
+
+// console.log("Сумма: ", sum);
+
+
+
+// var arr = [ 'a', 'b', 'c', 'd', 'e'];
+//  function moveElement(arr,from,to) {
+//   arr.splice(to,0,arr.splice(from,1)[0]);
+//   return arr;
+// };
+
+// (moveElement(arr,3,1))
+//  let arr = [ 'a', 'b', 'c', 'd', 'e'];
+// function moveElement(arr,from,to) {
+//   arr.splice(to,0,arr.splice(from,1)[0]);
+//   return arr;
+// };
+
+// moveElement(arr,3,1)
+
+// ------Вначале умножаем элементы, потом складываем результат
+// let arr = [1,2,3,4,5]
+// const value = arr.map((el) => el * 2)
+// console.log(value);
+// const z = value.reduce(function (a,b) {
+//   return a + b
+// })
+// console.log(z);
+
+ 
+// const nums1 = [99,32,21]
+// const nums = [ 11,32,54,65,3,65,1,]
+// const value = nums1.concat(nums)
+
+
+// const zna4 = value.reduce(function (a,b)  {
+//   return a + b
+// }
+// )
+// console.log(zna4)
+
+// let arr = [1,2,3,4,5]
+// let arr1 = arr.slice(0)
+// const value = arr1.map((el) => el * 2)
+// console.log(value);
+// const z = value.reduce(function (a,b) {
+//   return a + b
+// })
+
+
+let arr = [1,2,3,4,5]
+const value = arr.map(el => el * 2)
+console.log(value);
+let a = value.reduce(function (a,b)  {
+  return a + b
+})
+console.log(a);
