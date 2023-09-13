@@ -791,4 +791,8 @@ console.log('bezdar\'')
 console.log(883)
 console.log(4342)
 firstName.toUpperCase()
-fgfgfg
+
+console.log(102)
+console.log(10000)
+function a()
+dsd
