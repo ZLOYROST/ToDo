@@ -1,6 +1,7 @@
 const inputTask = document.getElementById('task-input');
 const TODOARRAY = []
 
+
 function cldiv() {
   document.getElementById("new").innerHTML = '';
   
@@ -8,67 +9,96 @@ function cldiv() {
 
 
 function render () {
-  cldiv()
+    cldiv()
+    TODOARRAY.forEach((el) => {
+        let firstElem = document.createElement("li");
+        
+        let newCheckBox = document.createElement('input');
+        
+        if(el.status) {
+          newCheckBox.setAttribute('checked', 'true');
+          
+        }
+        
+        newCheckBox.id = el.id
+        firstElem.id = document.getElementById("ggg")
+        newCheckBox.type = 'checkbox';
+        let textToList = document.createTextNode(el.text);
+        
+        
+        firstElem.appendChild(textToList);
+        firstElem.appendChild(newCheckBox)
+        
+        let list = document.getElementById("new");
 
-  TODOARRAY.forEach((el) => {
-    let firstElem = document.createElement("li");
-  
-    let textToList = document.createTextNode(el.text);
-    console.log(el.text)
-   
-    firstElem.appendChild(textToList);
-    let list = document.getElementById("new");
-    
-    list.appendChild(firstElem);
-    
+        if ( el.status == true) {
+          firstElem.classList.add("perecherkuvanue");
+      
+           
+        } else {
+          firstElem.classList.remove("perecherkuvanue");
+        }
+
+
+       
+        list.appendChild(firstElem);
   });
-  
-  
-  }
+}
 
-function addTask () {
-  let getInput = document.getElementById("task-input");
-  console.log('stop')
-    
-  if ( getInput.value == '' ) {
+
+function addTask () {   
+  if ( inputTask.value == '' ) {
     console.log('stop')
     return 
   }                  
 
-  
   let value = inputTask.value;
   
   const element = { 
    id: Date.now(),
-   text: value
+   text: value,
+   status: false
   }
   TODOARRAY.push(element)
-  getInput.value = '';  
-  render()
- 
- 
-
-  
+  inputTask.value = '';  
 }
 
 
 
 let butnAdd = document.querySelector("#butnAdd")
+butnAdd.addEventListener('click', function() {
+  addTask()
+  render()
+})
 
-butnAdd.addEventListener("click", () => {addTask()})
 
-
-
-  document.getElementById('task-input').addEventListener('keydown', function(e) {
-    if (e.keyCode === 13) {
+  document.getElementById('task-input').addEventListener('keydown', function(event) {
+    if (event.keyCode === 13) {
       addTask()
-      
-    }
+      render()
+}
   });
+ 
+document.addEventListener('click', function(event) {
+    TODOARRAY.map((el) => {
+        if(event.target.id == el.id) {
+            if(el.status == false) {
+                el.status = true 
+                return
+            }
+        }
 
+        if(event.target.id == el.id) {
+            if(el.status == true) {
+                el.status = false
+                return
+            }
+        }
+     })
+    render()
+})
 
-
-
+  
 
 
 
