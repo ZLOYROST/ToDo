@@ -10,7 +10,8 @@ function cldiv() {
 
 // отрисовка массива в DOM
 function render () {
-    cldiv()
+  cldiv()
+   inputTask.focus()
     TODOARRAY.forEach((el) => {
         let firstElem = document.createElement("li");
 
@@ -55,6 +56,9 @@ function render () {
 
 
        
+
+
+
   });
 }
 
@@ -77,16 +81,6 @@ function addTask () {
   inputTask.value = '';    // очищение инпута!!!
   
 }
-// let closeBtnForOne = document.querySelector("#closeBtnForOne");
-//   closeBtnForOne.addEventListener('click', function() {
-//   let close = document.createElement('close');
-//   if(TODOARRAY) {
-//     newCheckclose.setAttribute('checked', 'true');
-    
-//   }
-// })
-
-
 
 let butndelete = document.querySelector("#butndelete")                                        
 butndelete.addEventListener('click', function() {
@@ -128,7 +122,9 @@ butnAdd.addEventListener('click', function() {
                 return
             }
         }
-     
+          // if (event.target.id == el.id) {
+          //   console.log('part1',event.target.id);
+          // }
      
       
         
@@ -137,9 +133,31 @@ butnAdd.addEventListener('click', function() {
     render()
 })
 
-  
+  // --------------------------------------------------
 
-
+document.addEventListener('click', function(event) {
+  TODOARRAY.map((el) => { 
+    if(event.target.id == el.id) {
+      console.log('part1',event)
+      console.log('part2',target)
+      if (el.status) {
+        return
+      }
+      console.log('kjj',event.target.id);
+    }
+          
+    
+    
+    // if (event.target.id == el.id) {
+          //   console.log('part1',event.target.id);
+          // }
+     
+      
+        
+         
+      })
+    render()
+})
 
 
 
