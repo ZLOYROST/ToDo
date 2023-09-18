@@ -1,10 +1,10 @@
 // создаем масив, и инпут
 const inputTask = document.getElementById('task-input');
 let TODOARRAY = []
-
+const taskList = document.querySelector('#taskList')
 // функция очищения taskList после ввода
 function cldiv() {
-  document.getElementById("taskList").innerHTML = '';
+  taskList.innerHTML = '';
   
 }
 
@@ -29,57 +29,54 @@ function render () {
         firstElem.appendChild(textToList);
         
         let closeBtnForOne = document.createElement('button')
-        closeBtnForOne.textContent = 'x'
-        closeBtnForOne.type = 'checkbox' 
+        closeBtnForOne.textContent = 'X'
+        closeBtnForOne.setAttribute('data-action', 'delete')
         closeBtnForOne.id = el.id
-        if(el) {
-          closeBtnForOne.setAttribute('delete', 'el')
-        }
         firstElem.appendChild(closeBtnForOne)
-        
 
-        
-        
-        
-
-        let list = document.getElementById("taskList");
-        
         if ( el.status == true) {
           firstElem.classList.add("perecherkuvanue");
-      
-           
+          
         } else {
           firstElem.classList.remove("perecherkuvanue");
         }
         // в элемент list добавляется готовый элемент
-        list.appendChild(firstElem);
-
-
+        taskList.appendChild(firstElem);
        
+      });
+    }
+
+    // если пустое поле в инпуте, и пытаются нажать на кнопку добавить, то в консол выведет stop
+    function addTask () {   
+      if ( inputTask.value == '' ) {
+        console.log('stop')
+        return 
+      }                  
+      // формирование замечания и добавление в массив
+      let value = inputTask.value;
+      
+      const element = { 
+        id: Date.now(),
+        text: value,
+        status: false
+      }
+      
+      TODOARRAY.push(element)
+      inputTask.value = '';    // очищение инпута!!!
+      
+    }
+    taskList.addEventListener('click', deleteTask)
 
 
-
-  });
-}
-
-// если пустое поле в инпуте, и пытаются нажать на кнопку добавить, то в консол выведет stop
-function addTask () {   
-  if ( inputTask.value == '' ) {
-    console.log('stop')
-    return 
-  }                  
- // формирование замечания и добавление в массив
-  let value = inputTask.value;
-  
-  const element = { 
-   id: Date.now(),
-   text: value,
-   status: false
+function deleteTask(event) {
+  if(event.target.dataset.action === 'delete') {
+    TODOARRAY.forEach((el,index)=> {
+      if(el.id == event.target.id) {
+      console.log(event); 
+      TODOARRAY.splice(index,1)
+      }
+    })
   }
-  
-  TODOARRAY.push(element)
-  inputTask.value = '';    // очищение инпута!!!
-  
 }
 
 let butndelete = document.querySelector("#butndelete")                                        
@@ -122,14 +119,8 @@ butnAdd.addEventListener('click', function() {
                 return
             }
         }
-          // if (event.target.id == el.id) {
-          //   console.log('part1',event.target.id);
-          // }
-     
-      
         
-         
-      })
+     })
     render()
 })
 
@@ -138,26 +129,14 @@ butnAdd.addEventListener('click', function() {
 document.addEventListener('click', function(event) {
   TODOARRAY.map((el) => { 
     if(event.target.id == el.id) {
-      console.log('part1',event)
-      console.log('part2',target)
       if (el.status) {
         return
       }
-      console.log('kjj',event.target.id);
-    }
-          
-    
-    
-    // if (event.target.id == el.id) {
-          //   console.log('part1',event.target.id);
-          // }
-     
-      
-        
-         
+     }
       })
     render()
 })
+
 
 
 
