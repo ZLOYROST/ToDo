@@ -6,7 +6,15 @@ const taskList = document.querySelector('#taskList')
 function cldiv() {
   taskList.innerHTML = '';
   
-}
+  // сохранение в в локальную память
+} function saveToLocalStorage () {
+  localStorage.setItem('TODOARRAY', JSON.stringify(TODOARRAY))
+ }
+ if (localStorage.getItem('TODOARRAY')) {
+  TODOARRAY = JSON.parse(localStorage.getItem('TODOARRAY'))
+  render()
+ }
+
 
 // отрисовка массива в DOM
 function render () {
@@ -42,9 +50,10 @@ function render () {
         }
         // в элемент list добавляется готовый элемент
         taskList.appendChild(firstElem);
-       
+        saveToLocalStorage ()
       });
     }
+        
 
     // если пустое поле в инпуте, и пытаются нажать на кнопку добавить, то в консол выведет stop
     function addTask () {   
@@ -66,13 +75,12 @@ function render () {
       
     }
     taskList.addEventListener('click', deleteTask)
-
+    saveToLocalStorage ()
 
 function deleteTask(event) {
   if(event.target.dataset.action === 'delete') {
-    TODOARRAY.forEach((el,index)=> {
-      if(el.id == event.target.id) {
-      console.log(event); 
+    TODOARRAY.forEach((el,index) => {
+      if(event.target.id == el.id) {
       TODOARRAY.splice(index,1)
       }
     })
@@ -98,7 +106,7 @@ butnAdd.addEventListener('click', function() {
 
  // что бы по нажатию enter добавлялась таска
   document.getElementById('task-input').addEventListener('keydown', function(event) {
-    if (event.keyCode === 13) {
+    if (event.key === 'Enter') {
       addTask()
       render()
 }
@@ -126,18 +134,16 @@ butnAdd.addEventListener('click', function() {
 
   // --------------------------------------------------
 
-document.addEventListener('click', function(event) {
-  TODOARRAY.map((el) => { 
-    if(event.target.id == el.id) {
-      if (el.status) {
-        return
-      }
-     }
-      })
-    render()
-})
-
-
+// document.addEventListener('click', function(event) {
+//   TODOARRAY.map((el) => { 
+//     if(event.target.id == el.id) {
+//       if (el.status) {
+//         return
+//       }
+//      }
+//       })
+//     render()
+// })
 
 
 
