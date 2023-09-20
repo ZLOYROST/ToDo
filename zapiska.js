@@ -95,13 +95,28 @@ butndelete.addEventListener('click', function() {
   TODOARRAY = result
   render()
 })
-
+// Добавить задачу
 let butnAdd = document.querySelector("#butnAdd")
 butnAdd.addEventListener('click', function() {
   addTask()
   render()
 })
 
+let butnSelecteddAll = document.querySelector("#butnSelecteddAll")
+butnSelecteddAll.addEventListener('click', function() {
+ const result = TODOARRAY.every(el => {
+ return el.status == true
+})
+for(let i = 0; i < TODOARRAY.length; i++) {
+  TODOARRAY[i].status = true
+  if(result == true) {
+    TODOARRAY[i].status = false 
+  }
+}
+
+render()
+})
+ 
  // что бы по нажатию enter добавлялась таска
   document.getElementById('task-input').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
