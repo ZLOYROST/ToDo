@@ -2,19 +2,20 @@
 const inputTask = document.getElementById('task-input');
 let TODOARRAY = []
 const taskList = document.querySelector('#taskList')
+
 // функция очищения taskList после ввода
 function cldiv() {
   taskList.innerHTML = '';
-  
-  // сохранение в в локальную память
-} function saveToLocalStorage () {
-  localStorage.setItem('TODOARRAY', JSON.stringify(TODOARRAY))
- }
- if (localStorage.getItem('TODOARRAY')) {
-  TODOARRAY = JSON.parse(localStorage.getItem('TODOARRAY'))
-  render()
- }
+}
 
+// сохранение в в локальную память
+function saveToLocalStorage() {
+  localStorage.setItem('TODOARRAY', JSON.stringify(TODOARRAY))
+}
+if (localStorage.getItem('TODOARRAY')) {
+  TODOARRAY = JSON.parse(localStorage.getItem('TODOARRAY'))
+}
+ render()
 
 // отрисовка массива в DOM
 function render () {
@@ -50,8 +51,8 @@ function render () {
         }
         // в элемент list добавляется готовый элемент
         taskList.appendChild(firstElem);
-        saveToLocalStorage ()
       });
+      saveToLocalStorage()
     }
         
 
@@ -75,7 +76,6 @@ function render () {
       
     }
     taskList.addEventListener('click', deleteTask)
-    saveToLocalStorage ()
 
 function deleteTask(event) {
   if(event.target.dataset.action === 'delete') {
@@ -91,12 +91,10 @@ let butndelete = document.querySelector("#butndelete")
 butndelete.addEventListener('click', function() {
     const result = TODOARRAY.filter(el => {
     return el.status == false
-    
   })
   TODOARRAY = result
   render()
 })
-
 
 let butnAdd = document.querySelector("#butnAdd")
 butnAdd.addEventListener('click', function() {
@@ -132,18 +130,7 @@ butnAdd.addEventListener('click', function() {
     render()
 })
 
-  // --------------------------------------------------
 
-// document.addEventListener('click', function(event) {
-//   TODOARRAY.map((el) => { 
-//     if(event.target.id == el.id) {
-//       if (el.status) {
-//         return
-//       }
-//      }
-//       })
-//     render()
-// })
 
 
 
