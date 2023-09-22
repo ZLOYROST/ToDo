@@ -1,3 +1,15 @@
 .perecherkuvanue {
     text-decoration: line-through;
 }
+
+.checkboxOne {
+    width: 6mm;
+    height: 6mm;
+    position: relative;
+    top: 6.5px;
+    /* margin: 0 52%;
+    width: 20%; */
+    /* margin-bottom: 59.032px */
+}
+
+/* [type=checkbox] */

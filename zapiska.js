@@ -2,7 +2,7 @@
 const inputTask = document.getElementById('task-input');
 let TODOARRAY = []
 const taskList = document.querySelector('#taskList')
-
+let chbox = document.querySelector('#AllChecked') 
 // функция очищения taskList после ввода
 function cldiv() {
   taskList.innerHTML = '';
@@ -53,9 +53,9 @@ function render () {
         taskList.appendChild(firstElem);
       });
       saveToLocalStorage()
+      ChangeStatusForAllChecked ()
     }
-        
-
+    
     // если пустое поле в инпуте, и пытаются нажать на кнопку добавить, то в консол выведет stop
     function addTask () {   
       if ( inputTask.value == '' ) {
@@ -95,6 +95,7 @@ butndelete.addEventListener('click', function() {
   TODOARRAY = result
   render()
 })
+
 // Добавить задачу
 let butnAdd = document.querySelector("#butnAdd")
 butnAdd.addEventListener('click', function() {
@@ -102,28 +103,28 @@ butnAdd.addEventListener('click', function() {
   render()
 })
 
-let butnSelecteddAll = document.querySelector("#butnSelecteddAll")
-butnSelecteddAll.addEventListener('click', function() {
- const result = TODOARRAY.every(el => {
- return el.status == true
-})
-for(let i = 0; i < TODOARRAY.length; i++) {
-  TODOARRAY[i].status = true
-  if(result == true) {
-    TODOARRAY[i].status = false 
-  }
-}
+chbox.addEventListener('click', function() {
+  const result = TODOARRAY.every(el => {
+  return el.status == true
+ })
+ 
 
-render()
+ for(let i = 0; i < TODOARRAY.length; i++) {
+   TODOARRAY[i].status = true
+   if(result == true) {
+     TODOARRAY[i].status = false 
+   }
+ }
 })
  
- // что бы по нажатию enter добавлялась таска
+// что бы по нажатию enter добавлялась таска
   document.getElementById('task-input').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
       addTask()
       render()
 }
   });
+
  // перечеркиваем отмеченное 
  document.addEventListener('click', function(event) {
   TODOARRAY.map((el) => {
@@ -145,8 +146,17 @@ render()
     render()
 })
 
-
-
+function ChangeStatusForAllChecked () {
+  const result = TODOARRAY.every(el => {
+    return el.status == true
+   })
+   if(result == true) {
+    chbox.setAttribute('checked', 'true')
+   } else {
+    chbox.removeAttribute('checked')
+   }
+}
+   
 
 
 
