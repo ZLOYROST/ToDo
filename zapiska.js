@@ -3,24 +3,37 @@ const inputTask = document.getElementById('task-input');
 let TODOARRAY = []
 const taskList = document.querySelector('#taskList')
 let chbox = document.querySelector('#AllChecked') 
+let i = 0
+let total = document.querySelector('#total') 
+let a = 0
+let Selected = document.querySelector('#Selected')  
+let b = 0
+let Unselected = document.querySelector('#Unselected')
 // функция очищения taskList после ввода
 function cldiv() {
   taskList.innerHTML = '';
 }
 
 // сохранение в в локальную память
-function saveToLocalStorage() {
+function saveToLocalStorage() { 
   localStorage.setItem('TODOARRAY', JSON.stringify(TODOARRAY))
 }
 if (localStorage.getItem('TODOARRAY')) {
+  
   TODOARRAY = JSON.parse(localStorage.getItem('TODOARRAY'))
 }
  render()
 
 // отрисовка массива в DOM
-function render () {
+function render () {  
+  howMuchTask ()
+  howMuchSelected ()
+  howMuchUnSelected ()
+  total.textContent = i
+  Selected.textContent = a
+  Unselected.textContent = b
   cldiv()
-   inputTask.focus()
+  inputTask.focus()
     TODOARRAY.forEach((el) => {
         let firstElem = document.createElement("li");
 
@@ -54,8 +67,28 @@ function render () {
       });
       saveToLocalStorage()
       ChangeStatusForAllChecked ()
+      howMuchTask ()
     }
-    
+    // счетчик который показывает сколько всего тасок на странице
+function howMuchTask () {
+   i = TODOARRAY.length   
+   }
+//Сколько выделенных тасок
+function howMuchSelected () {
+     let sum = TODOARRAY.filter(el => {
+       return el.status == true
+      })
+      a = sum.length
+}
+
+      //сколько не выделенных тасок
+      function howMuchUnSelected () {
+        let sum = TODOARRAY.filter(el => {
+          return el.status == false
+         })
+         b = sum.length
+      }
+
     // если пустое поле в инпуте, и пытаются нажать на кнопку добавить, то в консол выведет stop
     function addTask () {   
       if ( inputTask.value == '' ) {
@@ -72,12 +105,15 @@ function render () {
       }
       
       TODOARRAY.push(element)
+      saveToLocalStorage()
       inputTask.value = '';    // очищение инпута!!!
       
     }
     taskList.addEventListener('click', deleteTask)
 
+    
 function deleteTask(event) {
+  
   if(event.target.dataset.action === 'delete') {
     TODOARRAY.forEach((el,index) => {
       if(event.target.id == el.id) {
@@ -85,6 +121,7 @@ function deleteTask(event) {
       }
     })
   }
+  
 }
 
 let butndelete = document.querySelector("#butndelete")                                        
@@ -93,6 +130,7 @@ butndelete.addEventListener('click', function() {
     return el.status == false
   })
   TODOARRAY = result
+  
   render()
 })
 
@@ -103,6 +141,7 @@ butnAdd.addEventListener('click', function() {
   render()
 })
 
+// чекбокс на выделить все
 chbox.addEventListener('click', function() {
   const result = TODOARRAY.every(el => {
   return el.status == true
@@ -119,7 +158,7 @@ chbox.addEventListener('click', function() {
  
 // что бы по нажатию enter добавлялась таска
   document.getElementById('task-input').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter') { 
       addTask()
       render()
 }
@@ -145,7 +184,7 @@ chbox.addEventListener('click', function() {
      })
     render()
 })
-
+// чекбокс который загорается если все элементы выделены
 function ChangeStatusForAllChecked () {
   const result = TODOARRAY.every(el => {
     return el.status == true
@@ -157,57 +196,3 @@ function ChangeStatusForAllChecked () {
    }
 }
    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
