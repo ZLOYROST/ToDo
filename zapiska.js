@@ -80,7 +80,6 @@ function howMuchSelected () {
       })
       a = sum.length
 }
-
       //сколько не выделенных тасок
       function howMuchUnSelected () {
         let sum = TODOARRAY.filter(el => {
