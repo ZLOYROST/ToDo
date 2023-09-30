@@ -33,13 +33,13 @@ function render () {
   Selected.textContent = a
   Unselected.textContent = b
   cldiv()
-  inputTask.focus()
+  // inputTask.focus()
     TODOARRAY.forEach((el) => {
         let firstElem = document.createElement("li");
-
+        firstElem.id = el.id
         // блок который относится к созданию чекбокса
         let newCheckBox = document.createElement('input');
-        newCheckBox.type = 'checkbox';
+        newCheckBox.type = 'checkbox'
         newCheckBox.id = el.id
         if(el.status) {
           newCheckBox.setAttribute('checked', 'true');
@@ -55,19 +55,28 @@ function render () {
         closeBtnForOne.setAttribute('data-action', 'delete')
         closeBtnForOne.id = el.id
         firstElem.appendChild(closeBtnForOne)
-
+        
         if ( el.status == true) {
           firstElem.classList.add("perecherkuvanue");
           
         } else {
           firstElem.classList.remove("perecherkuvanue");
         }
+        let buttonEdit = document.createElement('img');
+        buttonEdit.classList.add('eddit')
+        // buttonEdit.setAttribute("type", "button");
+        buttonEdit.type = 'image';
+        buttonEdit.src = './a.png.png'
+        buttonEdit.id = el.id
+        buttonEdit.setAttribute('data-action', 'edit')
+        document.body.appendChild(buttonEdit)
+        firstElem.appendChild(buttonEdit)
         // в элемент list добавляется готовый элемент
         taskList.appendChild(firstElem);
       });
       saveToLocalStorage()
-      ChangeStatusForAllChecked ()
-      howMuchTask ()
+      ChangeStatusForAllChecked()
+      howMuchTask()
     }
     // счетчик который показывает сколько всего тасок на странице
 function howMuchTask () {
@@ -89,7 +98,7 @@ function howMuchSelected () {
       }
 
     // если пустое поле в инпуте, и пытаются нажать на кнопку добавить, то в консол выведет stop
-    function addTask () {   
+    function addTask () {
       if ( inputTask.value == '' ) {
         console.log('stop')
         return 
@@ -108,9 +117,9 @@ function howMuchSelected () {
       inputTask.value = '';    // очищение инпута!!!
       
     }
-    taskList.addEventListener('click', deleteTask)
-
     
+    
+taskList.addEventListener('click', deleteTask)
 function deleteTask(event) {
   
   if(event.target.dataset.action === 'delete') {
@@ -120,7 +129,6 @@ function deleteTask(event) {
       }
     })
   }
-  
 }
 
 let butndelete = document.querySelector("#butndelete")                                        
@@ -129,9 +137,28 @@ butndelete.addEventListener('click', function() {
     return el.status == false
   })
   TODOARRAY = result
-  
   render()
 })
+
+//ниже рабочий код
+taskList.addEventListener('click', editTask)
+function editTask(event) { console.log('11',event)
+let perem 
+  if(event.target.dataset.action == 'edit') { console.log('22',event)
+      TODOARRAY.forEach((el,index) => {
+        if(event.target.id == el.id)  {
+          let input = document.createElement('input');
+          input.type = 'text';
+          document.body.append(input);
+
+        }
+      })
+  }
+}
+
+function inputInTask(elid) {
+document.querySelector('taskList')
+}
 
 // Добавить задачу
 let butnAdd = document.querySelector("#butnAdd")
@@ -146,7 +173,6 @@ chbox.addEventListener('click', function() {
   return el.status == true
  })
  
-
  for(let i = 0; i < TODOARRAY.length; i++) {
    TODOARRAY[i].status = true
    if(result == true) {
@@ -179,7 +205,6 @@ chbox.addEventListener('click', function() {
                 return
             }
         }
-        
      })
     render()
 })

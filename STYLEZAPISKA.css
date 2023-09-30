@@ -12,4 +12,12 @@
     /* margin-bottom: 59.032px */
 }
 
-/* [type=checkbox] */
+.eddit {
+    width: 25px;
+    height: 25px;
+    }
+
+#taskList li{    
+display: flex;
+gap: 9px;
+}
