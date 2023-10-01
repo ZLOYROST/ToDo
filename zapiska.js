@@ -45,11 +45,15 @@ function render () {
           newCheckBox.setAttribute('checked', 'true');
         }
         firstElem.appendChild(newCheckBox)
-        
+
+        //созадние дива с текстом
+        let div = document.createElement('div')
         let textToList = document.createTextNode(el.text);
-        // добавляем дочерний элемент внутрь основного (firstElem родитель)
-        firstElem.appendChild(textToList);
+        div.appendChild(textToList)
+        firstElem.appendChild(div)
         
+        
+        // добавляем дочерний элемент внутрь основного (firstElem родитель)
         let closeBtnForOne = document.createElement('button')
         closeBtnForOne.textContent = 'X'
         closeBtnForOne.setAttribute('data-action', 'delete')
@@ -68,10 +72,10 @@ function render () {
         buttonEdit.type = 'image';
         buttonEdit.src = './a.png.png'
         buttonEdit.id = el.id
+        console.log('555',el);
         buttonEdit.setAttribute('data-action', 'edit')
         document.body.appendChild(buttonEdit)
         firstElem.appendChild(buttonEdit)
-        
         // в элемент list добавляется готовый элемент
         taskList.appendChild(firstElem);
       });
@@ -140,24 +144,21 @@ butndelete.addEventListener('click', function() {
   TODOARRAY = result
   render()
 })
-let biba = document.querySelector('#li')
+
 //ниже рабочий код
 taskList.addEventListener('click', editTask)
 function editTask(event) { 
-let perem 
   if(event.target.dataset.action == 'edit') { 
-      TODOARRAY.forEach((el,index) => {
+      TODOARRAY.forEach((el) => {
         if(event.target.id == el.id)  {
+          render()
           let input = document.createElement('input');
-          let vstavka = document.querySelector('#taskList [id="1696084106036"]')
-          console.log('111',vstavka);
-
-          vstavka.after(input)
-          // ul.li.append(input);
+          let perem = event.target.id
+          let vstavka = document.querySelector(`#taskList [id="${perem}"] button`)
+          let replaceText = document.querySelector(`#taskList [id="${perem}"] div`)
+          replaceText.textContent = ''
+          vstavka.before(input)
           
-          // input.insertAdjacentHTML('beforebegin', '<p>Привет</p>');
-          
-
         }
       })
   }
