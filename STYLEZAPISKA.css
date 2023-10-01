@@ -21,3 +21,30 @@
 display: flex;
 gap: 9px;
 }
+
+#butnSelecteddAll {
+    background-color: rgb(64, 216, 50);
+    font-size: 10px;
+}
+
+#butndelete{
+    background-color:rgb(29, 143, 192)
+}
+
+#butnAdd {
+    background-color: rgb(156, 26, 104);
+    font-size: 15px;
+}
+
+#task-input {
+    background-color: rgb(244, 227, 36);
+} 
+
+#zzz {
+    background-color: plum
+}
+
+#taskList [id="1696084106036"] {
+    background-color: rgb(86, 92, 145)
+}
+

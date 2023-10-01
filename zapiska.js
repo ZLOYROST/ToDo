@@ -71,6 +71,7 @@ function render () {
         buttonEdit.setAttribute('data-action', 'edit')
         document.body.appendChild(buttonEdit)
         firstElem.appendChild(buttonEdit)
+        
         // в элемент list добавляется готовый элемент
         taskList.appendChild(firstElem);
       });
@@ -139,17 +140,23 @@ butndelete.addEventListener('click', function() {
   TODOARRAY = result
   render()
 })
-
+let biba = document.querySelector('#li')
 //ниже рабочий код
 taskList.addEventListener('click', editTask)
-function editTask(event) { console.log('11',event)
+function editTask(event) { 
 let perem 
-  if(event.target.dataset.action == 'edit') { console.log('22',event)
+  if(event.target.dataset.action == 'edit') { 
       TODOARRAY.forEach((el,index) => {
         if(event.target.id == el.id)  {
           let input = document.createElement('input');
-          input.type = 'text';
-          document.body.append(input);
+          let vstavka = document.querySelector('#taskList [id="1696084106036"]')
+          console.log('111',vstavka);
+
+          vstavka.after(input)
+          // ul.li.append(input);
+          
+          // input.insertAdjacentHTML('beforebegin', '<p>Привет</p>');
+          
 
         }
       })
@@ -206,7 +213,7 @@ chbox.addEventListener('click', function() {
             }
         }
      })
-    render()
+    // render()
 })
 // чекбокс который загорается если все элементы выделены
 function ChangeStatusForAllChecked () {
