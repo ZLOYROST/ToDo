@@ -128,11 +128,12 @@ taskList.addEventListener('click', deleteTask)
 function deleteTask(event) {
   
   if(event.target.dataset.action === 'delete') {
-    TODOARRAY.forEach((el,index) => {
+    TODOARRAY.forEach((el,index) => { 
       if(event.target.id == el.id) {
       TODOARRAY.splice(index,1)
       }
     })
+     render()
   }
 }
 
@@ -164,10 +165,6 @@ function editTask(event) {
   }
 }
 
-function inputInTask(elid) {
-document.querySelector('taskList')
-}
-
 // Добавить задачу
 let butnAdd = document.querySelector("#butnAdd")
 butnAdd.addEventListener('click', function() {
@@ -197,16 +194,17 @@ chbox.addEventListener('click', function() {
 }
   });
 
- // перечеркиваем отмеченное 
+ // перечеркиваем  
  document.addEventListener('click', function(event) {
-  TODOARRAY.map((el) => {
+  if(event.target.type == 'checkbox') {
+      TODOARRAY.map((el) => {
       if(event.target.id == el.id) {
           if(el.status == false) {
               el.status = true 
               return
           }
       }
-// отменяем перечеркивание
+         // отменяем перечеркивание
         if(event.target.id == el.id) {
             if(el.status == true) {
                 el.status = false
@@ -214,7 +212,8 @@ chbox.addEventListener('click', function() {
             }
         }
      })
-    // render()
+    render()
+  }
 })
 // чекбокс который загорается если все элементы выделены
 function ChangeStatusForAllChecked () {
@@ -227,4 +226,4 @@ function ChangeStatusForAllChecked () {
     chbox.removeAttribute('checked')
    }
 }
-   
+  
