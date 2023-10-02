@@ -154,14 +154,20 @@ function editTask(event) {
         if(event.target.id == el.id)  {
           render()
           let input = document.createElement('input');
+          input.setAttribute("inputEdit", "1")
           let perem = event.target.id
           let vstavka = document.querySelector(`#taskList [id="${perem}"] button`)
           let replaceText = document.querySelector(`#taskList [id="${perem}"] div`)
+          let proba = replaceText.innerHTML
           replaceText.textContent = ''
           vstavka.before(input)
+          console.log('1',proba);
+          let z = document.querySelector('[inputEdit="1"]')     
+          z.value = proba
           
         }
-      })
+      }
+      )
   }
 }
 
@@ -226,4 +232,6 @@ function ChangeStatusForAllChecked () {
     chbox.removeAttribute('checked')
    }
 }
+
+
   
