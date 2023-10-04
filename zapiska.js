@@ -72,7 +72,6 @@ function render () {
         buttonEdit.type = 'image';
         buttonEdit.src = './a.png.png'
         buttonEdit.id = el.id
-        console.log('555',el);
         buttonEdit.setAttribute('data-action', 'edit')
         document.body.appendChild(buttonEdit)
         firstElem.appendChild(buttonEdit)
@@ -159,18 +158,48 @@ function editTask(event) {
           let vstavka = document.querySelector(`#taskList [id="${perem}"] button`)
           let replaceText = document.querySelector(`#taskList [id="${perem}"] div`)
           let proba = replaceText.innerHTML
-          replaceText.textContent = ''
+          replaceText.textContent = input.value
           vstavka.before(input)
-          console.log('1',proba);
-          let z = document.querySelector('[inputEdit="1"]')     
-          z.value = proba
-          
+          input.value = proba
+          console.log('1',event);
+          document.querySelector('input').addEventListener('keydown', function() {
+            if(event.target.dataset.action == 'edit') {
+              el.text = input.value 
+              // addTask()
+            }
+          }, )
         }
       }
       )
+      
+      // console.log(input.value );
+    }
   }
-}
-
+      // if(event.target.dataset.action == 'edit') {
+      //   console.log('1',el.text);
+      //   input.value = proba
+      //   } else {
+      //     input.value = el.text 
+      //   }
+        // function izmenenue(event) {
+        // if(event.target == 'edit' ) {
+        // input.value == replaceText.textContent
+       
+        // }
+        // console.log(event);
+        // }
+  // console.log('1',vvv);
+  //   let str = "Twas the night before Xmas...";
+  // let vvv = str.replace(`${input.value}, ${proba}`)
+  // let str = input.value
+  // let newstr = str.replace(/xmas/i, "Christmas");
+  // let z = document.querySelector('[inputEdit="1"]')     
+  
+// document.querySelector('#btn').addEventListener('click', () => {
+//     document.querySelector('#Test').innerText = 'Чтоо';
+// });
+// document.getElementById('task-input').addEventListener('keydown', function(event) {
+//     if (event.key === 'Enter') { 
 // Добавить задачу
 let butnAdd = document.querySelector("#butnAdd")
 butnAdd.addEventListener('click', function() {
@@ -234,4 +263,25 @@ function ChangeStatusForAllChecked () {
 }
 
 
-  
+// taskList.addEventListener('click', editTask)
+// function editTask(event) { 
+//   if(event.target.dataset.action == 'edit') { 
+//       TODOARRAY.forEach((el) => {
+//         if(event.target.id == el.id)  {
+//           render()
+//           let input = document.createElement('input');
+//           input.setAttribute("inputEdit", "1")
+//           let perem = event.target.id
+//           let vstavka = document.querySelector(`#taskList [id="${perem}"] button`)
+//           let replaceText = document.querySelector(`#taskList [id="${perem}"] div`)
+//           let proba = replaceText.innerHTML
+//           vstavka.before(input)
+//           replaceText.textContent = input.value
+//           input.value = proba
+          
+          
+//         }
+//       }
+//       )
+//     }
+//   }
