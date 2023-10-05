@@ -66,15 +66,26 @@ function render () {
         } else {
           firstElem.classList.remove("perecherkuvanue");
         }
+        //кнопка изменения
         let buttonEdit = document.createElement('img');
         buttonEdit.classList.add('eddit')
-        // buttonEdit.setAttribute("type", "button");
         buttonEdit.type = 'image';
-        buttonEdit.src = './a.png.png'
+        buttonEdit.src = './2.png'
         buttonEdit.id = el.id
         buttonEdit.setAttribute('data-action', 'edit')
         document.body.appendChild(buttonEdit)
         firstElem.appendChild(buttonEdit)
+
+        //кнопка сохранения
+        let buttonSaveTaskstype = document.createElement('img')
+        buttonSaveTaskstype.classList.add('imgSave')
+        buttonSaveTaskstype.type = 'image'
+        buttonSaveTaskstype.src ='./1.png'
+        buttonSaveTaskstype.id = el.id
+        buttonSaveTaskstype.setAttribute('data-action', 'save')
+        document.body.appendChild(buttonSaveTaskstype)
+        firstElem.appendChild(buttonSaveTaskstype)
+
         // в элемент list добавляется готовый элемент
         taskList.appendChild(firstElem);
       });
@@ -86,6 +97,7 @@ function render () {
 function howMuchTask () {
    i = TODOARRAY.length   
    }
+
 //Сколько выделенных тасок
 function howMuchSelected () {
      let sum = TODOARRAY.filter(el => {
@@ -122,7 +134,6 @@ function howMuchSelected () {
       
     }
     
-    
 taskList.addEventListener('click', deleteTask)
 function deleteTask(event) {
   
@@ -145,61 +156,57 @@ butndelete.addEventListener('click', function() {
   render()
 })
 
-//ниже рабочий код
+//Функция изменения таски с последующим сохранением ее через enter
 taskList.addEventListener('click', editTask)
 function editTask(event) { 
   if(event.target.dataset.action == 'edit') { 
-      TODOARRAY.forEach((el) => {
-        if(event.target.id == el.id)  {
-          render()
-          let input = document.createElement('input');
-          input.setAttribute("inputEdit", "1")
-          let perem = event.target.id
-          let vstavka = document.querySelector(`#taskList [id="${perem}"] button`)
-          let replaceText = document.querySelector(`#taskList [id="${perem}"] div`)
-          let proba = replaceText.innerHTML
-          replaceText.textContent = input.value
-          vstavka.before(input)
-          input.value = proba
-          console.log('1',event);
+    render()
+    let input = document.createElement('input');
+    input.setAttribute("inputEdit", "1")
+    let perem = event.target.id
+    input.id = `edit${perem}`
+    let vstavka = document.querySelector(`#taskList [id="${perem}"] button`)
+    let replaceText = document.querySelector(`#taskList [id="${perem}"] div`)
+    let proba = replaceText.innerHTML
+    replaceText.textContent = input.value
+    vstavka.before(input)
+    input.value = proba
+    let input2 = document.querySelector(`#taskList #edit${perem}`)
+    console.log(input2);
+    
+    input2.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+            // if(event.target.dataset.action == 'edit') {
+              TODOARRAY.forEach((el) => {
+                let a = event.target.id
+                let b = a.slice(4)
+                if(b == el.id)  {
+                el.text = input.value 
+                }})
+              render()
+        }
+      } )
           document.querySelector('input').addEventListener('keydown', function() {
             if(event.target.dataset.action == 'edit') {
-              el.text = input.value 
-              // addTask()
             }
-          }, )
-        }
-      }
-      )
-      
-      // console.log(input.value );
+          } )
     }
   }
-      // if(event.target.dataset.action == 'edit') {
-      //   console.log('1',el.text);
-      //   input.value = proba
-      //   } else {
-      //     input.value = el.text 
-      //   }
-        // function izmenenue(event) {
-        // if(event.target == 'edit' ) {
-        // input.value == replaceText.textContent
-       
-        // }
-        // console.log(event);
-        // }
-  // console.log('1',vvv);
-  //   let str = "Twas the night before Xmas...";
-  // let vvv = str.replace(`${input.value}, ${proba}`)
-  // let str = input.value
-  // let newstr = str.replace(/xmas/i, "Christmas");
-  // let z = document.querySelector('[inputEdit="1"]')     
-  
-// document.querySelector('#btn').addEventListener('click', () => {
-//     document.querySelector('#Test').innerText = 'Чтоо';
-// });
-// document.getElementById('task-input').addEventListener('keydown', function(event) {
-//     if (event.key === 'Enter') { 
+  //сохранение таски по кнопке
+  taskList.addEventListener('click', SaveTask)
+  function SaveTask(event) {
+    if(event.target.dataset.action == 'save') {
+      TODOARRAY.forEach((el) => {
+        if(event.target.id == el.id) {
+        let a = event.target.id
+        event.target.id = el.id
+        let input2 = document.querySelector(`#edit${a}`)
+        el.text = input2.value
+        render()
+    }})
+   }
+  }
+
 // Добавить задачу
 let butnAdd = document.querySelector("#butnAdd")
 butnAdd.addEventListener('click', function() {
@@ -263,25 +270,3 @@ function ChangeStatusForAllChecked () {
 }
 
 
-// taskList.addEventListener('click', editTask)
-// function editTask(event) { 
-//   if(event.target.dataset.action == 'edit') { 
-//       TODOARRAY.forEach((el) => {
-//         if(event.target.id == el.id)  {
-//           render()
-//           let input = document.createElement('input');
-//           input.setAttribute("inputEdit", "1")
-//           let perem = event.target.id
-//           let vstavka = document.querySelector(`#taskList [id="${perem}"] button`)
-//           let replaceText = document.querySelector(`#taskList [id="${perem}"] div`)
-//           let proba = replaceText.innerHTML
-//           vstavka.before(input)
-//           replaceText.textContent = input.value
-//           input.value = proba
-          
-          
-//         }
-//       }
-//       )
-//     }
-//   }
