@@ -1,6 +1,7 @@
 // создаем масив, и инпут
 const inputTask = document.getElementById('task-input');
 let TODOARRAY = []
+let filter = 'All'
 const taskList = document.querySelector('#taskList')
 let chbox = document.querySelector('#AllChecked') 
 let i = 0
@@ -13,7 +14,25 @@ let Unselected = document.querySelector('#Unselected')
 function cldiv() {
   taskList.innerHTML = '';
 }
+function Filter () {
+  let ArrayForRender 
+  
+ switch (filter) {
+  case 'Active':
+    ArrayForRender = TODOARRAY.filter((el) => {
+      return el.status == true
+   })
+    break;
+    case 'Done':
+      ArrayForRender = TODOARRAY.filter((el) => {
+        return el.status == false
+ })
+ case 'All':
+  ArrayForRender = TODOARRAY
+}
 
+return ArrayForRender
+}
 // сохранение в в локальную память
 function saveToLocalStorage() { 
   localStorage.setItem('TODOARRAY', JSON.stringify(TODOARRAY))
@@ -33,8 +52,8 @@ function render () {
   Selected.textContent = a
   Unselected.textContent = b
   cldiv()
-  // inputTask.focus()
-    TODOARRAY.forEach((el) => {
+  let Arr = Filter()
+  Arr.forEach((el) => { 
         let firstElem = document.createElement("li");
         firstElem.id = el.id
         // блок который относится к созданию чекбокса
@@ -59,7 +78,8 @@ function render () {
         closeBtnForOne.setAttribute('data-action', 'delete')
         closeBtnForOne.id = el.id
         firstElem.appendChild(closeBtnForOne)
-        
+        closeBtnForOne.classList.add('closeBtnForOne')
+
         if ( el.status == true) {
           firstElem.classList.add("perecherkuvanue");
           
@@ -92,6 +112,7 @@ function render () {
       saveToLocalStorage()
       ChangeStatusForAllChecked()
       howMuchTask()
+      
     }
     // счетчик который показывает сколько всего тасок на странице
 function howMuchTask () {
@@ -133,7 +154,15 @@ function howMuchSelected () {
       inputTask.value = '';    // очищение инпута!!!
       
     }
-    
+    const buttons = document.querySelectorAll('.filterButton');
+     buttons.forEach((button) => {
+     button.addEventListener('click', function(event) {
+      filter = event.target.dataset.filter
+      render()
+    })
+     
+     })
+
 taskList.addEventListener('click', deleteTask)
 function deleteTask(event) {
   
@@ -156,7 +185,7 @@ butndelete.addEventListener('click', function() {
   render()
 })
 
-//Функция изменения таски с последующим сохранением ее через enter
+//Функция изменения таски с последующим сохранением ее через enter и отмена изменения по ESCAPE
 taskList.addEventListener('click', editTask)
 function editTask(event) { 
   if(event.target.dataset.action == 'edit') { 
@@ -172,11 +201,10 @@ function editTask(event) {
     vstavka.before(input)
     input.value = proba
     let input2 = document.querySelector(`#taskList #edit${perem}`)
-    console.log(input2);
     
+    //сохранение по кнопки ENTER
     input2.addEventListener('keydown', function(event) {
             if (event.key === 'Enter') {
-            // if(event.target.dataset.action == 'edit') {
               TODOARRAY.forEach((el) => {
                 let a = event.target.id
                 let b = a.slice(4)
@@ -186,13 +214,21 @@ function editTask(event) {
               render()
         }
       } )
-          document.querySelector('input').addEventListener('keydown', function() {
-            if(event.target.dataset.action == 'edit') {
-            }
-          } )
+     //Отмена изменения по Escape
+      input2.addEventListener('keydown', function(event) {
+      if(event.key === 'Escape') { 
+        TODOARRAY.forEach((el) => {
+        let a = event.target.id
+        if(a == el.id) {
+           el.text
+        }
+        render()
+      }
+      )}})
     }
   }
-  //сохранение таски по кнопке
+  
+  //сохранение изменений таски по кнопке
   taskList.addEventListener('click', SaveTask)
   function SaveTask(event) {
     if(event.target.dataset.action == 'save') {
@@ -233,7 +269,7 @@ chbox.addEventListener('click', function() {
     if (event.key === 'Enter') { 
       addTask()
       render()
-}
+    }
   });
 
  // перечеркиваем  
