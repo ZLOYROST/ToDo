@@ -1,2 +1,0 @@
-# Gut and GitHub
-dfbdksblwrwhlrlwi
