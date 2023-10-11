@@ -22,6 +22,7 @@
 #taskList li{    
 display: flex;
 gap: 9px;
+margin-top: 1%;
 }
 
 #butnSelecteddAll {
@@ -61,32 +62,65 @@ bottom: 400px;
 }
 
 #HideSelected {
-    position: absolute;
-    bottom: 399px;
-    left: 92px;
-    width: 2%;
-    height: 2%;
+    /* position: absolute; */
+    bottom: -50px;
+    left: 0px;
+    width: 15%;
+    height: 15%;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
 }
 
-.HideUnSelected {
+/* .HideUnSelected {
     position: absolute;
 bottom: 370px;
-}
+width: 4%;
+height: 4%;
+left: 50px
+} */
 #HideUnSelected {
-    position: absolute;
-    bottom: 365px;
-    left: 109px;
-    width: 2%;
-    height: 2%;
+    /* position: absolute; */
+    bottom: -90px;
+    left: 0px;
+    width: 15%;
+    height: 15%;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    border: 2px solid #8f24dc;
 }
-.Active {
+/* .Active {
     position: absolute;
     bottom: 340px;
-}
+} */
 #Active {
-    position: absolute;
-    bottom: 340px;
-    left: 109px;
-    width: 2%;
-    height: 2%;
+    /* position: absolute; */
+    bottom: -130px;
+    left: 0px;
+    width: 15%;
+    height: 15%;
+    margin-top: 2%;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    border: 2px solid #d1b00c;
+    }
+
+#myDIV {
+    position: relative;
+    left: 25px
+}
+ 
+#HideSelected.Active {
+    background-color: rgb(183, 157, 103);
+}
+
+#HideUnSelected.Active {
+    background-color: rgb(142, 12, 12)
+}
+
+#Active.Active {
+    background-color: blueviolet
 }

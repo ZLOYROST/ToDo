@@ -5,27 +5,44 @@ let filter = 'All'
 const taskList = document.querySelector('#taskList')
 let chbox = document.querySelector('#AllChecked') 
 let i = 0
-let total = document.querySelector('#total') 
 let a = 0
-let Selected = document.querySelector('#Selected')  
 let b = 0
+let total = document.querySelector('#total') 
+let Selected = document.querySelector('#Selected')  
 let Unselected = document.querySelector('#Unselected')
+
+// чекбокс который загорается если все элементы выделены
+function ChangeStatusForAllChecked () {
+  const result = TODOARRAY.every(el => {
+    return el.status == true
+  })
+  if(result == true) {
+    chbox.setAttribute('checked', 'true')
+  } else {
+    chbox.removeAttribute('checked')
+  }
+}
+
 // функция очищения taskList после ввода
 function cldiv() {
   taskList.innerHTML = '';
 }
+// Функция типизации (фильтрации) по кнопкам 
 function Filter () {
   let ArrayForRender 
+  let Buttons = document.querySelectorAll('.filterButton')
+  Buttons.forEach( el => el.classList.remove('Active'))
+  document.querySelector(`[data-filter="${filter}"]`).classList.add('Active')
   
  switch (filter) {
   case 'Active':
     ArrayForRender = TODOARRAY.filter((el) => {
-      return el.status == true
+      return el.status == false
    })
     break;
     case 'Done':
       ArrayForRender = TODOARRAY.filter((el) => {
-        return el.status == false
+        return el.status == true
  })
  case 'All':
   ArrayForRender = TODOARRAY
@@ -254,7 +271,7 @@ butnAdd.addEventListener('click', function() {
 chbox.addEventListener('click', function() {
   const result = TODOARRAY.every(el => {
   return el.status == true
- })
+ }, render())
  
  for(let i = 0; i < TODOARRAY.length; i++) {
    TODOARRAY[i].status = true
@@ -293,16 +310,6 @@ chbox.addEventListener('click', function() {
     render()
   }
 })
-// чекбокс который загорается если все элементы выделены
-function ChangeStatusForAllChecked () {
-  const result = TODOARRAY.every(el => {
-    return el.status == true
-   })
-   if(result == true) {
-    chbox.setAttribute('checked', 'true')
-   } else {
-    chbox.removeAttribute('checked')
-   }
-}
+
 
 
