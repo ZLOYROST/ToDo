@@ -1,4 +1,7 @@
 // создаем масив, и инпут
+
+let cnt = 5; //сколько отображаем сначала
+
 const inputTask = document.getElementById('task-input');
 let TODOARRAY = []
 let filter = 'All'
@@ -60,16 +63,35 @@ if (localStorage.getItem('TODOARRAY')) {
 }
  render()
 
-// отрисовка массива в DOM
-function render () {  
-  howMuchTask ()
-  howMuchSelected ()
-  howMuchUnSelected ()
-  total.textContent = i
+function Pagination(Arr) {
+  let a = document.querySelector('.pagination').innerHTML = "";
+  let cnt_page = Math.ceil(Arr.length / cnt)
+    for(let i = 1; i <= cnt_page; i++) {
+    
+    let buttonForPag = document.createElement('li')
+    let link1 = document.createElement('a')
+    link1.textContent = `${i}`
+    buttonForPag.appendChild(link1)
+    link1.classList.add("page-link")
+    buttonForPag.classList.add("page-item")
+    let kk = document.querySelector('.pagination')
+    kk.append(buttonForPag)
+    
+    }
+}
+      
+    // отрисовка массива в DOM
+    function render () {  
+      howMuchTask ()
+      // renderPage()
+      howMuchSelected ()
+      howMuchUnSelected ()
+      total.textContent = i
   Selected.textContent = a
   Unselected.textContent = b
   cldiv()
   let Arr = Filter()
+  Pagination(Arr)
   Arr.forEach((el) => { 
         let firstElem = document.createElement("li");
         firstElem.id = el.id
@@ -313,3 +335,18 @@ chbox.addEventListener('click', function() {
 
 
 
+// function Pagination(Arr) {
+//   let a = document.querySelector('.pagination').innerHTML = "";
+  
+//   let cnt_page = Math.ceil(Arr.length / cnt)
+  
+//   let buttonForPag = document.createElement('li')
+//   let link = document.createElement('a')
+//   link.textContent = '2'
+//     buttonForPag.appendChild(link)
+//     link.classList.add("page-link")
+//     buttonForPag.classList.add("page-item")
+//     let kk = document.querySelector('.pagination')
+//     kk.append(buttonForPag)
+   
+//   }
