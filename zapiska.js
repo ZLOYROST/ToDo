@@ -1,7 +1,7 @@
 // создаем масив, и инпут
 
-let cnt = 5; //сколько отображаем сначала
-
+let cnt = 5; //сколько отображаем тасок на странице
+let currentPage = 1;
 const inputTask = document.getElementById('task-input');
 let TODOARRAY = []
 let filter = 'All'
@@ -63,36 +63,56 @@ if (localStorage.getItem('TODOARRAY')) {
 }
  render()
 
-function Pagination(Arr) {
+function Pagination(TabulateArr) {
+ 
   let a = document.querySelector('.pagination').innerHTML = "";
-  let cnt_page = Math.ceil(Arr.length / cnt)
+  let cnt_page = Math.ceil(TabulateArr.length / cnt)
     for(let i = 1; i <= cnt_page; i++) {
     
     let buttonForPag = document.createElement('li')
     let link1 = document.createElement('a')
     link1.textContent = `${i}`
     buttonForPag.appendChild(link1)
+    link1.setAttribute('data-action', 'switch')
+    link1.id = i
+    // let currentPage = currentPage().slice(currentPage * cnt, currentPage * cnt + cnt)
     link1.classList.add("page-link")
     buttonForPag.classList.add("page-item")
     let kk = document.querySelector('.pagination')
     kk.append(buttonForPag)
     
-    }
-}
+    buttonForPag.addEventListener('click', switchPage) 
+    
+    
+  }
+  }
+
+  function switchPage(event) {
+    
+    if(event.target.dataset.action == 'switch') {
+      currentPage = event.target.id
       
-    // отрисовка массива в DOM
-    function render () {  
-      howMuchTask ()
-      // renderPage()
+    }
+  }
+      
+  // отрисовка массива в DOM
+  function render() {  
+    howMuchTask ()
+    // renderPage()
       howMuchSelected ()
       howMuchUnSelected ()
       total.textContent = i
-  Selected.textContent = a
-  Unselected.textContent = b
-  cldiv()
-  let Arr = Filter()
-  Pagination(Arr)
-  Arr.forEach((el) => { 
+      Selected.textContent = a
+      Unselected.textContent = b
+      cldiv()
+      let TabulateArr = Filter()
+      let tasksForQurentPages = TabulateArr.slice(currentPage * cnt , currentPage * cnt + cnt)
+      console.log('1',TODOARRAY);
+      console.log('2',tasksForQurentPages);
+      
+  // let page = Pagination().slice(currentPage * cnt, currentPage * cnt + cnt);
+  Pagination(TabulateArr)
+  tasksForQurentPages.forEach((el) => { 
         let firstElem = document.createElement("li");
         firstElem.id = el.id
         // блок который относится к созданию чекбокса
@@ -144,6 +164,8 @@ function Pagination(Arr) {
         buttonSaveTaskstype.setAttribute('data-action', 'save')
         document.body.appendChild(buttonSaveTaskstype)
         firstElem.appendChild(buttonSaveTaskstype)
+        
+        
 
         // в элемент list добавляется готовый элемент
         taskList.appendChild(firstElem);
@@ -335,18 +357,3 @@ chbox.addEventListener('click', function() {
 
 
 
-// function Pagination(Arr) {
-//   let a = document.querySelector('.pagination').innerHTML = "";
-  
-//   let cnt_page = Math.ceil(Arr.length / cnt)
-  
-//   let buttonForPag = document.createElement('li')
-//   let link = document.createElement('a')
-//   link.textContent = '2'
-//     buttonForPag.appendChild(link)
-//     link.classList.add("page-link")
-//     buttonForPag.classList.add("page-item")
-//     let kk = document.querySelector('.pagination')
-//     kk.append(buttonForPag)
-   
-//   }
