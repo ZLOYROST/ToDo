@@ -62,7 +62,6 @@ bottom: 400px;
 }
 
 #HideSelected {
-    /* position: absolute; */
     bottom: -50px;
     left: 0px;
     width: 15%;
@@ -73,15 +72,9 @@ bottom: 400px;
     border: 2px solid #4CAF50;
 }
 
-/* .HideUnSelected {
-    position: absolute;
-bottom: 370px;
-width: 4%;
-height: 4%;
-left: 50px
-} */
+
 #HideUnSelected {
-    /* position: absolute; */
+    
     bottom: -90px;
     left: 0px;
     width: 15%;
@@ -91,12 +84,9 @@ left: 50px
     color: black;
     border: 2px solid #8f24dc;
 }
-/* .Active {
-    position: absolute;
-    bottom: 340px;
-} */
+
 #Active {
-    /* position: absolute; */
+    
     bottom: -130px;
     left: 0px;
     width: 15%;

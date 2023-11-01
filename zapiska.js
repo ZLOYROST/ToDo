@@ -74,7 +74,7 @@ if (localStorage.getItem('TODOARRAY')) {
 function Pagination(TabulateArr) {
   let a = document.querySelector('.pagination').innerHTML = "";
   let cnt_page = Math.ceil(TabulateArr.length / cnt)
-  currentPage = 1
+  // currentPage = 1
     for(let i = 1; i <= cnt_page; i++) {
     let buttonForPag = document.createElement('li')
     let link1 = document.createElement('a')
@@ -356,3 +356,4 @@ chbox.addEventListener('click', function() {
 
 
 
+// vvvvvvv
