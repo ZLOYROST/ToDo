@@ -30,7 +30,7 @@ margin-top: 1%;
     font-size: 15px;
 }
 
-#butndelete{
+#butnDelete{
     background-color:rgb(29, 143, 192)
 }
 
@@ -53,7 +53,6 @@ margin-top: 1%;
 .title {
     color:rgb(120, 3, 245);
     width: 600px;
-    
 }
  
 .HideSelected {
@@ -74,7 +73,6 @@ bottom: 400px;
 
 
 #HideUnSelected {
-    
     bottom: -90px;
     left: 0px;
     width: 15%;
@@ -86,7 +84,6 @@ bottom: 400px;
 }
 
 #Active {
-    
     bottom: -130px;
     left: 0px;
     width: 15%;
@@ -98,9 +95,8 @@ bottom: 400px;
     border: 2px solid #d1b00c;
     }
 
-#myDIV {
-    position: relative;
-    left: 35px
+.header {
+    margin-left: 30px;
 }
  
 #HideSelected.Active {
@@ -122,4 +118,8 @@ bottom: 400px;
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.title {
+    margin: 18px;
 }

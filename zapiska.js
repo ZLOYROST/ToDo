@@ -12,11 +12,11 @@ let countUnselected = 0
 const total = document.querySelector('#total') 
 const Selected = document.querySelector('#Selected')  
 const Unselected = document.querySelector('#Unselected')
-
+// ChangeStatusForAllChecked
 // чекбокс который загорается если все элементы выделены
-function ChangeStatusForAllChecked () {
+function сhange_status_for_all_checked () {
   const result = TODOARRAY.every(el => {
-    return el.status == true
+    return el.status === true
   })
   if(result == true) {
     chbox.setAttribute('checked', 'true')
@@ -26,7 +26,7 @@ function ChangeStatusForAllChecked () {
 }
 
 // функция очищения taskList после ввода
-function cldiv() {
+function clearDiv() {
   taskList.innerHTML = '';
 }
 // Функция (фильтрации) по кнопкам 
@@ -39,12 +39,12 @@ function Filter () {
  switch (filter) {
   case 'Active':
     ArrayForRender = TODOARRAY.filter((el) => {
-      return el.status == false
+      return el.status === false
    })
     break;
     case 'Done':
       ArrayForRender = TODOARRAY.filter((el) => {
-        return el.status == true
+        return el.status === true
  })
  break;
  case 'All':
@@ -99,13 +99,13 @@ function Pagination(TabulateArr) {
       
   // отрисовка массива в DOM
   function render() {  
-      howMuchTask ()
+      countTotal = TODOARRAY.length  
       howMuchSelected ()
       howMuchUnSelected ()
       total.textContent = countTotal
       Selected.textContent = countSelected
       Unselected.textContent = countUnselected
-      cldiv()
+      clearDiv()
       let TabulateArr = Filter()
       let page = currentPage - 1
       let tasksForQurentPages = TabulateArr.slice(page * cnt  , page * cnt + cnt)
@@ -164,32 +164,26 @@ function Pagination(TabulateArr) {
         document.body.appendChild(buttonSaveTaskstype)
         firstElem.appendChild(buttonSaveTaskstype)
         
-        
-
         // в элемент list добавляется готовый элемент
         taskList.appendChild(firstElem);
       });
       saveToLocalStorage()
-      ChangeStatusForAllChecked()
-      howMuchTask()
+      сhange_status_for_all_checked()
+      countTotal = TODOARRAY.length  
       
     }
-    // счетчик который показывает сколько всего тасок на странице
-function howMuchTask () {
-  countTotal = TODOARRAY.length   
-   }
 
 //Сколько выделенных тасок
 function howMuchSelected () {
      let sum = TODOARRAY.filter(el => {
-       return el.status == true
+       return el.status === true
       })
       countSelected = sum.length
 }
       //сколько не выделенных тасок
       function howMuchUnSelected () {
         let sum = TODOARRAY.filter(el => {
-          return el.status == false
+          return el.status === false
          })
          countUnselected = sum.length
       }
@@ -197,7 +191,6 @@ function howMuchSelected () {
     // если пустое поле в инпуте, и пытаются нажать на кнопку добавить, то в консол выведет stop
     function addTask () {
       if ( inputTask.value == '' ) {
-        console.log('stop')
         return 
       }                  
       // формирование замечания и добавление в массив
@@ -210,7 +203,6 @@ function howMuchSelected () {
       }
       
       TODOARRAY.push(element)
-      saveToLocalStorage()
       inputTask.value = '';    // очищение инпута!!!
       
     }
@@ -236,10 +228,10 @@ function deleteTask(event) {
   }
 }
 
-let butndelete = document.querySelector("#butndelete")                                        
-butndelete.addEventListener('click', function() {
+let butnDelete = document.querySelector("#butnDelete")                                        
+butnDelete.addEventListener('click', function() {
     const result = TODOARRAY.filter(el => {
-    return el.status == false
+    return el.status === false
   })
   TODOARRAY = result
   render()
@@ -294,9 +286,9 @@ function editTask(event) {
     if(event.target.dataset.action == 'save') {
       TODOARRAY.forEach((el) => {
         if(event.target.id == el.id) {
-        let a = event.target.id
+        let targetid = event.target.id
         event.target.id = el.id
-        let input2 = document.querySelector(`#edit${a}`)
+        let input2 = document.querySelector(`#edit${targetid}`)
         el.text = input2.value
         render()
     }})
@@ -313,7 +305,7 @@ butnAdd.addEventListener('click', function() {
 // чекбокс на выделить все
 chbox.addEventListener('click', function() {
   const result = TODOARRAY.every(el => {
-  return el.status == true
+  return el.status === true
  }, render())
  
  for(let i = 0; i < TODOARRAY.length; i++) {

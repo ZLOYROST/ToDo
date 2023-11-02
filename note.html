@@ -12,10 +12,10 @@
 <body>
 
   <div id="myDIV" class="header">
-  <h2 style="margin:20px" class="title">Список дел</h2>
+  <h1 class="title">Список дел</h1>
   <input type="text" id="task-input" placeholder="Название дела...">
   <button id="butnAdd"> Добавить задачу</button>
-  <button id="butndelete"> Удалить выбранные</button>
+  <button id="butnDelete"> Удалить выбранные</button>
   <button id="butnSelecteddAll"> Отметить все =></button>
   <input type="checkbox" id="AllChecked" class="checkboxOne"> 
   <div id="SecondDiv" class="bother">
@@ -39,15 +39,11 @@
     Qty Unselected:
 <span id="Unselected"></span>
   </div>
-  <div class="HideSelected">
-    <!-- Hide selected -->
-  </div>
-  <div class="HideUnSelected">
-   
-  </div>
-  <div class="Active">
-    
-  </div>
+
+  <div class="HideSelected">   </div>
+  <div class="HideUnSelected"> </div>
+  <div class="Active">         </div>
+
   <nav aria-label="Page navigation example">
     <ul class="pagination">
       <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -55,7 +51,6 @@
       <li class="page-item" id="buttonNext"><a class="page-link" href="#">Next</a></li>
     </ul>
   </nav>
-      <!-- </div> -->
   <script src="./zapiska.js"></script>
 
 </body>
