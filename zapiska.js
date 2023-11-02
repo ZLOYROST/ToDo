@@ -6,12 +6,12 @@ let TODOARRAY = []
 let filter = 'All'
 const taskList = document.querySelector('#taskList')
 let chbox = document.querySelector('#AllChecked') 
-let i = 0
-let a = 0
-let b = 0
-let total = document.querySelector('#total') 
-let Selected = document.querySelector('#Selected')  
-let Unselected = document.querySelector('#Unselected')
+let countTotal = 0
+let countSelected = 0
+let countUnselected = 0
+const total = document.querySelector('#total') 
+const Selected = document.querySelector('#Selected')  
+const Unselected = document.querySelector('#Unselected')
 
 // чекбокс который загорается если все элементы выделены
 function ChangeStatusForAllChecked () {
@@ -102,9 +102,9 @@ function Pagination(TabulateArr) {
       howMuchTask ()
       howMuchSelected ()
       howMuchUnSelected ()
-      total.textContent = i
-      Selected.textContent = a
-      Unselected.textContent = b
+      total.textContent = countTotal
+      Selected.textContent = countSelected
+      Unselected.textContent = countUnselected
       cldiv()
       let TabulateArr = Filter()
       let page = currentPage - 1
@@ -176,7 +176,7 @@ function Pagination(TabulateArr) {
     }
     // счетчик который показывает сколько всего тасок на странице
 function howMuchTask () {
-   i = TODOARRAY.length   
+  countTotal = TODOARRAY.length   
    }
 
 //Сколько выделенных тасок
@@ -184,14 +184,14 @@ function howMuchSelected () {
      let sum = TODOARRAY.filter(el => {
        return el.status == true
       })
-      a = sum.length
+      countSelected = sum.length
 }
       //сколько не выделенных тасок
       function howMuchUnSelected () {
         let sum = TODOARRAY.filter(el => {
           return el.status == false
          })
-         b = sum.length
+         countUnselected = sum.length
       }
 
     // если пустое поле в инпуте, и пытаются нажать на кнопку добавить, то в консол выведет stop
@@ -355,6 +355,3 @@ chbox.addEventListener('click', function() {
 })
 
 
-
-// vvvvvvv
-// вавава//
