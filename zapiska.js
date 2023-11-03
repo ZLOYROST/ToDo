@@ -1,4 +1,3 @@
-
 let currentPage = 1
 let cnt = 5; //сколько отображаем тасок на странице
 const inputTask = document.getElementById('task-input');
@@ -33,7 +32,7 @@ function clearDiv() {
 function Filter () {
   let ArrayForRender 
   let Buttons = document.querySelectorAll('.filterButton')
-  Buttons.forEach( el => el.classList.remove('Active'))
+  Buttons.forEach(el => el.classList.remove('Active'))
   document.querySelector(`[data-filter="${filter}"]`).classList.add('Active')
   
  switch (filter) {
@@ -63,18 +62,20 @@ if (localStorage.getItem('TODOARRAY')) {
 }
  render()
 
- // функция чтобы если на странице не осталось тасок, тебя перекинуло на 1 страницу
+//  // функция чтобы если на странице не осталось тасок, тебя перекинуло на 1 страницу
  function returnToPage(TabulateArr) {
   let cnt_page = Math.ceil(TabulateArr.length / cnt)
    if(currentPage > cnt_page) {
+    currentPage = 1 
+  }
 }
-}
+render()
 
 // функция для переключиния страниц
 function Pagination(TabulateArr) {
-  let a = document.querySelector('.pagination').innerHTML = "";
+  document.querySelector('.pagination').innerHTML = "";
   let cnt_page = Math.ceil(TabulateArr.length / cnt)
-  // currentPage = 1
+  currentPage 
     for(let i = 1; i <= cnt_page; i++) {
     let buttonForPag = document.createElement('li')
     let link1 = document.createElement('a')
@@ -87,7 +88,7 @@ function Pagination(TabulateArr) {
     let kk = document.querySelector('.pagination')
     kk.append(buttonForPag)
     buttonForPag.addEventListener('click', switchPage) 
-  }
+    }
   }
 
   function switchPage(event) {
@@ -155,14 +156,14 @@ function Pagination(TabulateArr) {
         firstElem.appendChild(buttonEdit)
 
         //кнопка сохранения
-        let buttonSaveTaskstype = document.createElement('img')
-        buttonSaveTaskstype.classList.add('imgSave')
-        buttonSaveTaskstype.type = 'image'
-        buttonSaveTaskstype.src ='./1.png'
-        buttonSaveTaskstype.id = el.id
-        buttonSaveTaskstype.setAttribute('data-action', 'save')
-        document.body.appendChild(buttonSaveTaskstype)
-        firstElem.appendChild(buttonSaveTaskstype)
+        let buttonsaveTaskstype = document.createElement('img')
+        buttonsaveTaskstype.classList.add('imgSave')
+        buttonsaveTaskstype.type = 'image'
+        buttonsaveTaskstype.src ='./1.png'
+        buttonsaveTaskstype.id = el.id
+        buttonsaveTaskstype.setAttribute('data-action', 'save')
+        document.body.appendChild(buttonsaveTaskstype)
+        firstElem.appendChild(buttonsaveTaskstype)
         
         // в элемент list добавляется готовый элемент
         taskList.appendChild(firstElem);
@@ -170,7 +171,6 @@ function Pagination(TabulateArr) {
       saveToLocalStorage()
       сhange_status_for_all_checked()
       countTotal = TODOARRAY.length  
-      
     }
 
 //Сколько выделенных тасок
@@ -212,12 +212,9 @@ function howMuchSelected () {
       filter = event.target.dataset.filter
       render()
     })
-     
      })
 
-taskList.addEventListener('click', deleteTask)
 function deleteTask(event) {
-  
   if(event.target.dataset.action === 'delete') {
     TODOARRAY.forEach((el,index) => { 
       if(event.target.id == el.id) {
@@ -281,8 +278,8 @@ function editTask(event) {
   }
   
   //сохранение изменений таски по кнопке
-  taskList.addEventListener('click', SaveTask)
-  function SaveTask(event) {
+  // taskList.addEventListener('click', saveTask)
+  function saveTask(event) {
     if(event.target.dataset.action == 'save') {
       TODOARRAY.forEach((el) => {
         if(event.target.id == el.id) {
@@ -317,7 +314,7 @@ chbox.addEventListener('click', function() {
 })
  
 // что бы по нажатию enter добавлялась таска
-  document.getElementById('task-input').addEventListener('keydown', function(event) {
+  inputTask.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') { 
       addTask()
       render()
@@ -346,4 +343,5 @@ chbox.addEventListener('click', function() {
   }
 })
 
-
+taskList.addEventListener('click', saveTask)
+taskList.addEventListener('click', deleteTask)
